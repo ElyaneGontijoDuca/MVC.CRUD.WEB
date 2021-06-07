@@ -1,0 +1,39 @@
+﻿@model MVCCRUDweb.Models.ViewModels.TablaViewModel
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Editar", "Tabla1", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(d=>d.Id) <!--Para guardar o ID-->
+            <div>
+                @Html.LabelFor(d => d.Nombre)
+                @Html.TextBoxFor(d=> d.Nombre, "", new{@class="form-control"})
+                @Html.ValidationMessageFor(d => d.Nombre, null, new { @classs = "red"});
+            </div>
+            <div>
+                @Html.LabelFor(d=> d.Correo)
+                @Html.TextBoxFor(d=> d.Correo, "", new {@class="form-control"})
+                @Html.ValidationMessageFor(d => d.Correo, null, new { @class = "red" });
+            </div>
+            <div>
+                @Html.LabelFor(d=>d.Fecha_Nacimiento)<br/>
+                @Html.EditorFor(d=> d.Fecha_Nacimiento, "", new {@class="form-Control"})
+                @Html.ValidationMessageFor(d => d.Fecha_Nacimiento, null, new { @class = "red" });
+            </div>
+        </div>
+        <br />
+        <!--Adicionando um botao-->
+        <div style="text-align:left">
+            <input  value="Salvar" class="btn btn-primary" type="submit"/>
+
+        </div>
+        <div class="row" style="text-align:right">
+            <a href="~/Tabla1/Index" class="btn btn-primary">Sair</a>
+        </div>
+    </div>
+}
